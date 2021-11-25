@@ -1,14 +1,36 @@
 {% extends 'main/base.html.twig' %}
 {% block body %}
 
-	<div class="container-fluid">
-		<div class="row no-gutters justify-content-center mt-5">
-			<div class="col-12 col-lg-6 col-md-6">
-				<h1 class="display-4 text-center">
-					{{ title }}
-				</h1>
-			</div>
+<div class="container-fluid">
+	<div class="row no-gutters justify-content-center mt-5">
+		<div class="col-12 col-lg-6 col-md-6">
+			<h1 class="display-4 text-center">
+				{{ title }}
+			</h1>
 		</div>
 	</div>
+</div>
 
+<div class="container-fluid">
+	<div class="row no-gutters text-center">
+{# othervise should be used block  verbatim/endverbatim #}
+		<div id="app">
+			<h3> [[ message ]] </h3>
+		</div>
+
+	</div>
+</div>
+{% endblock %}
+
+{% block addJs %}
+	<script>
+		Vue.options.delimiters = ['[[',']]'];
+		let app = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello from Vue'
+			},
+			// delimiters: ['[[',']]'],
+			});
+	</script>
 {% endblock %}
